@@ -1,42 +1,43 @@
-# sv
+# Launchbase
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Security-first SaaS foundation built with SvelteKit.
 
-## Creating a project
+## Project Contract
 
-If you're seeing this, you've probably already done this step. Congrats!
+This project follows a strict security and product contract from day one:
 
-```sh
-# create a new project
-npx sv create my-app
-```
+- Auth, tenant isolation, RBAC, billing gates, and auditable actions are first-class architecture concerns.
+- No shortcuts that make future tenant isolation, payment security, or access control harder.
+- All sensitive checks are server-side; client state is never treated as trusted authority.
+- No secrets in git, ever. Use `.env.example` placeholders only.
 
-To recreate this project with the same configuration:
+Read these docs before implementing features:
 
-```sh
-# recreate this project
-npx sv@0.15.3 create --template minimal --types ts --install npm launchbase
-```
+- [Security Contract](docs/SECURITY_CONTRACT.md)
+- [Engineering Checklist](docs/ENGINEERING_CHECKLIST.md)
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Local Development
 
 ```sh
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+## Build
 
 ```sh
 npm run build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+## UI and Licensing Direction
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- Use Flowbite or Flowbite Pro style/components where appropriate.
+- Keep this repository private while using paid/proprietary Flowbite Pro assets.
+- Do not convert this codebase into a public UI kit, template, or theme product.
+
+## Architecture Direction
+
+- Keep SaaS Core separate from future product modules.
+- Avoid niche-specific product assumptions at this stage.
+- Do not connect this project to Nuvio.
